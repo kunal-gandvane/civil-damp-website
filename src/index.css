@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-navy: var(--color-primary);
+  --color-navy-light: #334155;
+  --color-navy-dark: var(--color-primary-dark);
+  --color-gold: var(--color-accent);
+  --color-gold-light: #e0c470;
+  --color-gold-dark: #a8872e;
+
+  --font-family-sans: 'Inter', sans-serif;
+  --font-family-display: 'Playfair Display', serif;
+
+  --shadow-card: 0 2px 12px rgba(0,0,0,0.2);
+  --shadow-card-hover: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+:root {
+  --color-primary: #0f172a;
+  --color-primary-dark: #020617;
+  --color-accent: #c9a84c;
+  --color-accent-rgb: 201, 168, 76;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0b1120;
+  color: #f1f5f9;
+}
+
+/* ===== Flip Card ===== */
+.flip-card {
+  perspective: 1000px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* ===== Page Fade-in ===== */
+.page-fade {
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Hover Lift ===== */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+}
+
+/* ===== Dark Gradient ===== */
+.bg-navy-gradient {
+  background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+}
+
+/* ===== Timeline ===== */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  background: var(--color-accent);
+  border-radius: 50%;
+}
+.timeline-line::after {
+  content: '';
+  position: absolute;
+  left: -1.15rem;
+  top: 1.25rem;
+  width: 2px;
+  height: calc(100% - 1rem);
+  background: rgba(var(--color-accent-rgb), 0.2);
+}
+
+/* ===== Glow Effect on Accent Elements ===== */
+.glow-accent {
+  box-shadow: 0 0 20px rgba(var(--color-accent-rgb), 0.15);
+}
+.glow-accent:hover {
+  box-shadow: 0 0 30px rgba(var(--color-accent-rgb), 0.25);
+}
+
+/* ===== Pulse Animation for icons ===== */
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* ===== Shimmer effect for loading / premium feel ===== */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(var(--color-accent-rgb), 0.05), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
