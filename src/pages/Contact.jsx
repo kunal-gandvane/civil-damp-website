@@ -131,11 +131,21 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Address */}
-            <div className="p-5 rounded-lg" style={{ backgroundColor: 'rgba(30,58,95,0.05)', border: '1px solid rgba(30,58,95,0.12)' }}>
-              <p className="text-sm font-medium text-slate-200 mb-1">🏛️ Department of Civil Engineering</p>
-              <p className="text-sm text-slate-400">Indian Institute of Technology Bombay</p>
-              <p className="text-sm text-slate-400">Powai, Mumbai — 400076, Maharashtra, India</p>
+            {/* Department Office & Address */}
+            <div className="p-6 rounded-xl bg-[#111827] border border-slate-800 space-y-3">
+              <h3 className="font-semibold text-slate-100 text-sm flex items-center gap-2">
+                🏛️ Department of Civil Engineering Office
+              </h3>
+              <p className="text-xs text-slate-300">
+                The Head, Department of Civil Engineering,<br />
+                Indian Institute of Technology Bombay, Powai, Mumbai — 400076, India.
+              </p>
+              <div className="text-xs text-slate-400 space-y-1 pt-2 border-t border-slate-800">
+                <p><span className="text-slate-300 font-medium">Phone:</span> +91-22-2576 7301 / 7300</p>
+                <p><span className="text-slate-300 font-medium">Fax:</span> +91-22-2576 7302</p>
+                <p><span className="text-slate-300 font-medium">HOD Email:</span> <a href="mailto:hod@civil.iitb.ac.in" className="text-slate-200 hover:underline" style={{ color: 'var(--color-accent)' }}>hod@civil.iitb.ac.in</a></p>
+                <p><span className="text-slate-300 font-medium">Web Portal:</span> <a href="https://www.civil.iitb.ac.in/" target="_blank" rel="noreferrer" className="text-slate-200 hover:underline" style={{ color: 'var(--color-accent)' }}>https://www.civil.iitb.ac.in/</a></p>
+              </div>
             </div>
           </div>
         </div>

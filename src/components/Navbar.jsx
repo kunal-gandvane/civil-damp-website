@@ -9,8 +9,9 @@ const navItems = [
     label: 'Academics', path: '/academics',
     children: [
       { label: 'Curriculum', path: '/academics', tab: 0 },
-      { label: 'Courses', path: '/academics', tab: 1 },
-      { label: 'Academic Resources', path: '/academics', tab: 2 },
+      { label: 'Specializations & Labs', path: '/academics', tab: 1 },
+      { label: 'Courses & Reviews', path: '/academics', tab: 2 },
+      { label: 'Academic Resources', path: '/academics', tab: 3 },
     ],
   },
   {
