@@ -43,7 +43,9 @@ export default function Team() {
           <div className="p-8 rounded-xl text-center"
             style={{ backgroundColor: 'rgba(var(--color-accent-rgb),0.06)', border: '2px solid var(--color-accent)' }}>
             <div className="w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4"
-              style={{ backgroundColor: 'rgba(var(--color-accent-rgb),0.15)' }}>GR</div>
+              style={{ backgroundColor: 'rgba(var(--color-accent-rgb),0.15)', border: '1px solid var(--color-accent)' }}>
+              {facultyCoordinator.name.replace('Prof. ', '').split(' ').map(w => w[0]).join('').slice(0, 2)}
+            </div>
             <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: 'var(--color-accent)' }}>
               Faculty Coordinator
             </p>

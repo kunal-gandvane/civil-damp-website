@@ -13,15 +13,6 @@ const LinkedInIcon = () => (
   </svg>
 )
 
-const quickLinks = [
-  { label: 'Home', path: '/' },
-  { label: 'About DAMP', path: '/about' },
-  { label: 'Academics', path: '/academics' },
-  { label: 'Opportunities', path: '/opportunities' },
-  { label: 'Blogs', path: '/blogs' },
-  { label: 'Contact', path: '/contact' },
-]
-
 export default function Footer() {
   return (
     <footer style={{ backgroundColor: 'var(--color-primary-dark)' }} className="text-white mt-auto">
@@ -71,12 +62,14 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold mb-4" style={{ color: 'var(--color-accent)' }}>Get in Touch</h4>
-            <div className="space-y-2 text-sm text-slate-500">
-              <p>📧 damp@civil.iitb.ac.in</p>
+            <h4 className="font-semibold mb-4" style={{ color: 'var(--color-accent)' }}>Department & DAMP</h4>
+            <div className="space-y-2 text-sm text-slate-400">
+              <p>📧 <a href="mailto:hod@civil.iitb.ac.in" className="hover:text-slate-200">hod@civil.iitb.ac.in</a> (Office)</p>
+              <p>✉️ <a href="mailto:damp@civil.iitb.ac.in" className="hover:text-slate-200">damp@civil.iitb.ac.in</a> (DAMP)</p>
+              <p>📞 +91-22-2576 7301 / 7300</p>
               <p>🏛️ Department of Civil Engineering</p>
               <p>🎓 Indian Institute of Technology Bombay</p>
-              <p>📍 Powai, Mumbai — 400076</p>
+              <p>📍 Powai, Mumbai — 400076, India</p>
             </div>
           </div>
         </div>
