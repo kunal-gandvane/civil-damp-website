@@ -1,58 +1,88 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { MapPin, Clock, X, ChevronRight, ExternalLink, Mail } from 'lucide-react'
+import { MapPin, Clock, X, ChevronRight, ExternalLink, Mail, Sparkles, Award } from 'lucide-react'
 import { internships, scholarships, competitions, professors, projects } from '../data/dummy'
 
-const tabs = ['Internship Experiences', 'Research & Faculty Profiles', 'Scholarships', 'Competitions']
+const tabs = ['Internship Experiences', 'Faculty Research Profiles', 'Scholarships & Fellowships', 'Competitions & Fests']
 
 const categoryColors = {
-  Core: { bg: 'rgba(var(--color-accent-rgb), 0.15)', text: 'var(--color-accent)' },
-  'Non-Core': { bg: 'rgba(59, 130, 246, 0.15)', text: '#60a5fa' },
-  Research: { bg: 'rgba(168, 85, 247, 0.15)', text: '#c084fc' },
-  International: { bg: 'rgba(34, 197, 94, 0.15)', text: '#4ade80' },
+  Core: { bg: 'rgba(15, 23, 42, 0.08)', text: '#0f172a' },
+  'Non-Core': { bg: 'rgba(37, 99, 235, 0.1)', text: '#2563eb' },
+  Research: { bg: 'rgba(147, 51, 234, 0.1)', text: '#7e22ce' },
+  International: { bg: 'rgba(16, 185, 129, 0.1)', text: '#059669' },
 }
 
 function Modal({ item, type, onClose }) {
   if (!item) return null
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}
-      style={{ backgroundColor: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}>
-      <div className="bg-[#111827] rounded-2xl w-full max-w-lg shadow-2xl p-7 relative max-h-[85vh] overflow-y-auto border border-slate-800" onClick={e => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute top-4 right-4 p-1.5 rounded-full text-slate-500 hover:text-slate-200 hover:bg-slate-800"><X size={18} /></button>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-150"
+      onClick={onClose}
+    >
+      <div
+        className="bg-white rounded-3xl w-full max-w-lg shadow-2xl p-7 relative max-h-[85vh] overflow-y-auto border border-neutral-200/90 animate-in zoom-in-95 duration-150"
+        onClick={e => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 p-2 rounded-full text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 transition-colors"
+          aria-label="Close"
+        >
+          <X size={18} />
+        </button>
+
         {type === 'internship' && (
           <>
-            <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
-              style={{ backgroundColor: 'rgba(var(--color-accent-rgb), 0.15)', color: 'var(--color-accent)' }}>{item.category}</span>
-            <h3 className="font-display text-xl font-bold mb-1 text-slate-100">{item.title}</h3>
-            <p className="text-sm text-slate-400 mb-4">{item.company}</p>
-            <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-slate-400 mb-5 pb-5 border-b border-slate-800">
-              <span className="flex items-center gap-1.5"><MapPin size={14} style={{ color: 'var(--color-accent)' }} />{item.location}</span>
-              <span className="flex items-center gap-1.5"><Clock size={14} style={{ color: 'var(--color-accent)' }} />{item.duration}</span>
+            <span
+              className="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3"
+              style={{ backgroundColor: 'rgba(15,23,42,0.08)', color: '#0f172a' }}
+            >
+              {item.category}
+            </span>
+            <h3 className="font-display text-xl font-extrabold mb-1 text-neutral-950">{item.title}</h3>
+            <p className="text-sm font-semibold text-neutral-600 mb-4">{item.company}</p>
+            <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-neutral-500 mb-5 pb-4 border-b border-neutral-100">
+              <span className="flex items-center gap-1.5"><MapPin size={13} className="text-neutral-400" />{item.location}</span>
+              <span className="flex items-center gap-1.5"><Clock size={13} className="text-neutral-400" />{item.duration}</span>
             </div>
-            <p className="text-xs font-semibold mb-1" style={{ color: 'var(--color-accent)' }}>Experience Shared By</p>
-            <p className="text-sm text-slate-200 font-medium mb-4">{item.author}, {item.batch}</p>
-            <div className="p-4 rounded-xl text-sm text-slate-200 leading-relaxed bg-[#0b1120] border-l-4" style={{ borderColor: 'var(--color-accent)' }}>
+            <p className="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-1">Experience Shared By</p>
+            <p className="text-sm text-neutral-900 font-bold mb-4">{item.author}, {item.batch}</p>
+            <div className="p-4 rounded-2xl text-xs sm:text-sm text-neutral-700 leading-relaxed bg-neutral-50 border border-neutral-200/80">
               {item.excerpt}
             </div>
           </>
         )}
+
         {type === 'competition' && (
           <>
-            <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3" style={{ backgroundColor: 'rgba(var(--color-accent-rgb), 0.15)', color: 'var(--color-accent)' }}>{item.category}</span>
-            <h3 className="font-display text-xl font-bold mb-2 text-slate-100">{item.name}</h3>
-            <p className="text-sm text-slate-400 mb-5">{item.organizer}</p>
-            <div className="p-4 rounded-xl text-sm text-slate-200 leading-relaxed bg-[#0b1120] border-l-4" style={{ borderColor: 'var(--color-accent)' }}>{item.description}</div>
+            <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3 bg-neutral-100 text-neutral-800">
+              {item.category}
+            </span>
+            <h3 className="font-display text-xl font-extrabold mb-2 text-neutral-950">{item.name}</h3>
+            <p className="text-xs text-neutral-500 mb-5">{item.organizer}</p>
+            <div className="p-4 rounded-2xl text-xs sm:text-sm text-neutral-700 leading-relaxed bg-neutral-50 border border-neutral-200/80">
+              {item.description}
+            </div>
           </>
         )}
+
         {type === 'project' && (
           <>
-            <h3 className="font-display text-xl font-bold mb-2 text-slate-100">{item.title}</h3>
-            <p className="text-sm font-semibold mb-1" style={{ color: 'var(--color-accent)' }}>{item.student}</p>
-            <p className="text-sm text-slate-400 mb-5">Guide: {item.professor} · {item.year}</p>
-            <div className="p-4 rounded-xl text-sm text-slate-200 leading-relaxed bg-[#0b1120] border-l-4" style={{ borderColor: 'var(--color-accent)' }}>{item.description}</div>
+            <h3 className="font-display text-xl font-extrabold mb-2 text-neutral-950">{item.title}</h3>
+            <p className="text-xs font-bold text-neutral-900 mb-1">{item.student}</p>
+            <p className="text-xs text-neutral-500 mb-5">Advisor: {item.professor} · {item.year}</p>
+            <div className="p-4 rounded-2xl text-xs sm:text-sm text-neutral-700 leading-relaxed bg-neutral-50 border border-neutral-200/80">
+              {item.description}
+            </div>
           </>
         )}
-        <button onClick={onClose} className="mt-5 w-full py-2.5 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90" style={{ backgroundColor: 'var(--color-accent)' }}>Close</button>
+
+        <button
+          onClick={onClose}
+          className="mt-6 w-full creso-btn-primary !py-2.5 justify-center"
+        >
+          Close
+        </button>
       </div>
     </div>
   )
@@ -72,22 +102,37 @@ export default function Opportunities() {
   const filteredProfessors = professors.filter(p => deptFilter === 'All' || p.department === deptFilter)
 
   return (
-    <div className="page-fade pt-16">
-      <div className="bg-navy-gradient py-16 text-white text-center border-b border-slate-800">
-        <div className="max-w-3xl mx-auto px-4">
-          <p className="text-sm font-semibold mb-2" style={{ color: 'var(--color-accent)' }}>BEYOND THE CLASSROOM</p>
-          <h1 className="font-display text-4xl sm:text-5xl font-bold mb-4">Opportunities & Research</h1>
-          <p style={{ color: '#94a3b8' }}>Explore real faculty research profiles across all 7 disciplines, senior internship stories, scholarships, and technical competitions.</p>
+    <div className="bg-[#faf9f5] min-h-screen text-neutral-900 pt-16">
+      {/* Hero Header */}
+      <div className="py-20 sm:py-24 text-center border-b border-neutral-200/80 creso-hero-glow bg-grid-pattern">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold mb-4 bg-white/90 border border-neutral-200/90 text-neutral-700 shadow-2xs">
+            <Sparkles size={13} className="text-amber-500" />
+            <span>Faculty Research · Internships · Fellowships</span>
+          </div>
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-950 tracking-tight mb-4">
+            Opportunities & Research
+          </h1>
+          <p className="text-base sm:text-lg text-neutral-600 max-w-2xl mx-auto leading-relaxed">
+            Explore faculty research profiles across all 7 disciplines, senior internship stories at L&T and Arup, international fellowships, and national hackathons.
+          </p>
         </div>
       </div>
 
-      <div className="sticky top-16 z-30 bg-[#111827] shadow-sm border-b border-slate-800">
+      {/* Modern Pill Tabs */}
+      <div className="sticky top-16 z-30 bg-[#faf9f5]/95 backdrop-blur-md border-b border-neutral-200/80 py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-0 overflow-x-auto">
+          <div className="flex gap-1.5 overflow-x-auto no-scrollbar py-1">
             {tabs.map((tab, i) => (
-              <button key={tab} onClick={() => setActiveTab(i)}
-                className="whitespace-nowrap px-5 py-4 text-sm font-medium border-b-2 transition-colors"
-                style={activeTab === i ? { borderColor: 'var(--color-accent)', color: '#f1f5f9', fontWeight: '600' } : { borderColor: 'transparent', color: '#94a3b8' }}>
+              <button
+                key={tab}
+                onClick={() => setActiveTab(i)}
+                className={`whitespace-nowrap px-4 py-2 text-xs font-semibold rounded-full transition-all duration-150 ${
+                  activeTab === i
+                    ? 'bg-neutral-900 text-white shadow-xs'
+                    : 'bg-white/80 text-neutral-600 hover:text-neutral-900 border border-neutral-200/70 hover:bg-white'
+                }`}
+              >
                 {tab}
               </button>
             ))}
@@ -101,35 +146,59 @@ export default function Opportunities() {
           <div>
             <div className="flex flex-wrap gap-2 mb-8">
               {['All', 'Core', 'Non-Core', 'Research', 'International'].map(cat => (
-                <button key={cat} onClick={() => setCatFilter(cat)}
-                  className="px-4 py-1.5 rounded-full text-sm font-medium transition-all border"
-                  style={catFilter === cat ? { backgroundColor: 'rgba(var(--color-accent-rgb),0.2)', color: 'white', borderColor: 'var(--color-accent)' } : { backgroundColor: '#111827', color: '#94a3b8', borderColor: '#334155' }}>
+                <button
+                  key={cat}
+                  onClick={() => setCatFilter(cat)}
+                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all border ${
+                    catFilter === cat
+                      ? 'bg-neutral-900 text-white border-neutral-900 shadow-xs'
+                      : 'bg-white text-neutral-600 border-neutral-200 hover:border-neutral-300'
+                  }`}
+                >
                   {cat}
                 </button>
               ))}
             </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {filteredInternships.map(intern => {
-                const cc = categoryColors[intern.category] || { bg: '#1e293b', text: '#94a3b8' }
+                const cc = categoryColors[intern.category] || { bg: '#f1f5f9', text: '#334155' }
                 return (
-                  <div key={intern.id} className="bg-[#111827] rounded-xl overflow-hidden hover-lift cursor-pointer group border border-slate-800 flex flex-col justify-between"
-                    style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.08)' }}
-                    onClick={() => setModal({ item: intern, type: 'internship' })}>
-                    <div className="h-1.5" style={{ backgroundColor: 'var(--color-accent)' }} />
-                    <div className="p-5 flex-1 flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-start justify-between mb-2">
-                          <h4 className="font-semibold text-slate-200 text-sm leading-snug flex-1 pr-2 group-hover:underline">{intern.title}</h4>
-                          <span className="text-xs font-semibold px-2 py-0.5 rounded-full shrink-0" style={{ backgroundColor: cc.bg, color: cc.text }}>{intern.category}</span>
-                        </div>
-                        <div className="flex flex-wrap gap-x-3 text-xs text-slate-400 mb-2">
-                          <span className="flex items-center gap-1"><MapPin size={11} />{intern.location}</span>
-                          <span className="flex items-center gap-1"><Clock size={11} />{intern.duration}</span>
-                        </div>
-                        <p className="text-sm text-slate-300 line-clamp-2 leading-relaxed">{intern.excerpt}</p>
+                  <div
+                    key={intern.id}
+                    className="bg-white rounded-3xl p-6 hover-lift cursor-pointer group border border-neutral-200/80 shadow-2xs hover:border-neutral-300 flex flex-col justify-between transition-all"
+                    onClick={() => setModal({ item: intern, type: 'internship' })}
+                  >
+                    <div>
+                      <div className="flex items-start justify-between mb-3">
+                        <span
+                          className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full"
+                          style={{ backgroundColor: cc.bg, color: cc.text }}
+                        >
+                          {intern.category}
+                        </span>
+                        <span className="text-[11px] font-semibold text-neutral-500">{intern.company}</span>
                       </div>
-                      <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-slate-300 group-hover:text-white">
-                        Read full experience <ChevronRight size={12} />
+
+                      <h4 className="font-bold text-neutral-900 text-base leading-snug mb-2 group-hover:text-black">
+                        {intern.title}
+                      </h4>
+
+                      <div className="flex flex-wrap gap-x-3 text-xs text-neutral-500 mb-3">
+                        <span className="flex items-center gap-1"><MapPin size={12} className="text-neutral-400" />{intern.location}</span>
+                        <span className="flex items-center gap-1"><Clock size={12} className="text-neutral-400" />{intern.duration}</span>
+                      </div>
+
+                      <p className="text-xs sm:text-sm text-neutral-600 line-clamp-3 leading-relaxed">
+                        {intern.excerpt}
+                      </p>
+                    </div>
+
+                    <div className="mt-5 pt-4 border-t border-neutral-100 flex items-center justify-between">
+                      <span className="text-xs text-neutral-500 font-medium">By {intern.author}</span>
+                      <span className="inline-flex items-center gap-1 text-xs font-bold text-neutral-900 group-hover:gap-1.5 transition-all">
+                        <span>Read story</span>
+                        <ChevronRight size={12} />
                       </span>
                     </div>
                   </div>
@@ -144,14 +213,17 @@ export default function Opportunities() {
           <div className="space-y-14">
             <div>
               <div className="max-w-3xl mb-6">
-                <h3 className="font-display text-2xl font-bold mb-2 text-slate-100">Faculty Research Profiles across 7 Specializations</h3>
-                <p className="text-sm text-slate-400">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Mentorship & Advising</span>
+                <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight mt-1 mb-2">
+                  Faculty Research Profiles across 7 Specializations
+                </h3>
+                <p className="text-sm text-neutral-600 leading-relaxed">
                   Explore faculty research domains at IIT Bombay Civil Engineering to find potential BTP / M.Tech / Ph.D. advisors and summer research opportunities.
                 </p>
               </div>
 
               {/* Specialization Filter */}
-              <div className="flex flex-wrap gap-2 mb-8">
+              <div className="flex flex-wrap gap-1.5 mb-8">
                 {[
                   { label: 'All Specializations', val: 'All' },
                   { label: 'Transportation (TSE)', val: 'Transportation Systems Engineering' },
@@ -162,46 +234,68 @@ export default function Opportunities() {
                   { label: 'Remote Sensing (RS)', val: 'Remote Sensing' },
                   { label: 'Construction Mgmt (CTM)', val: 'Construction Technology And Management' },
                 ].map(dept => (
-                  <button key={dept.val} onClick={() => setDeptFilter(dept.val)}
-                    className="px-3 py-1.5 rounded-full text-xs font-medium transition-all border"
-                    style={deptFilter === dept.val ? { backgroundColor: 'rgba(var(--color-accent-rgb),0.2)', color: 'white', borderColor: 'var(--color-accent)' } : { backgroundColor: '#111827', color: '#94a3b8', borderColor: '#334155' }}>
+                  <button
+                    key={dept.val}
+                    onClick={() => setDeptFilter(dept.val)}
+                    className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all border ${
+                      deptFilter === dept.val
+                        ? 'bg-neutral-900 text-white border-neutral-900 shadow-xs'
+                        : 'bg-white text-neutral-600 border-neutral-200 hover:border-neutral-300'
+                    }`}
+                  >
                     {dept.label}
                   </button>
                 ))}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {filteredProfessors.map(prof => (
-                  <div key={prof.id} className="bg-[#111827] rounded-xl p-6 hover-lift border border-slate-800 flex flex-col justify-between" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.08)' }}>
+                  <div
+                    key={prof.id}
+                    className="bg-white rounded-3xl p-6 hover-lift border border-neutral-200/80 shadow-2xs hover:border-neutral-300 flex flex-col justify-between transition-all"
+                  >
                     <div>
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold shrink-0 border border-slate-700" style={{ backgroundColor: 'rgba(var(--color-accent-rgb),0.15)' }}>
+                        <div className="w-11 h-11 rounded-full bg-neutral-900 text-white font-bold flex items-center justify-center text-xs shadow-xs shrink-0">
                           {prof.name.replace('Prof. ', '').split(' ').map(w => w[0]).join('').slice(0, 2)}
                         </div>
                         <div>
-                          <h4 className="font-semibold text-slate-100 text-sm leading-snug">{prof.name}</h4>
-                          <p className="text-xs text-slate-400">{prof.designation}</p>
+                          <h4 className="font-bold text-neutral-900 text-sm leading-snug">{prof.name}</h4>
+                          <p className="text-[11px] text-neutral-500">{prof.designation}</p>
                         </div>
                       </div>
-                      <span className="inline-block text-xs font-bold px-2.5 py-0.5 rounded-full mb-3" style={{ backgroundColor: 'rgba(var(--color-accent-rgb),0.15)', color: 'var(--color-accent)' }}>
+
+                      <span className="inline-block text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-neutral-100 text-neutral-700 border border-neutral-200/60 mb-3">
                         {prof.department}
                       </span>
+
                       <div className="flex flex-wrap gap-1.5 mb-4">
                         {prof.areas.map(area => (
-                          <span key={area} className="text-xs px-2.5 py-1 rounded-md bg-[#0b1120] text-slate-300 border border-slate-800">
+                          <span
+                            key={area}
+                            className="text-xs px-2.5 py-0.5 rounded-lg bg-neutral-50 text-neutral-600 border border-neutral-200/60"
+                          >
                             {area}
                           </span>
                         ))}
                       </div>
                     </div>
 
-                    <div className="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
-                      <a href={`mailto:${prof.email}`} className="text-slate-400 hover:text-slate-200 flex items-center gap-1">
+                    <div className="pt-4 border-t border-neutral-100 flex items-center justify-between text-xs">
+                      <a
+                        href={`mailto:${prof.email}`}
+                        className="text-neutral-500 hover:text-neutral-900 flex items-center gap-1"
+                      >
                         <Mail size={12} /> {prof.email}
                       </a>
-                      <a href={prof.website} target="_blank" rel="noreferrer"
-                        className="font-semibold text-slate-300 hover:text-white inline-flex items-center gap-1" style={{ color: 'var(--color-accent)' }}>
-                        Profile <ExternalLink size={11} />
+                      <a
+                        href={prof.website}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-bold text-neutral-900 hover:underline inline-flex items-center gap-1"
+                      >
+                        <span>Profile</span>
+                        <ExternalLink size={11} />
                       </a>
                     </div>
                   </div>
@@ -210,18 +304,28 @@ export default function Opportunities() {
             </div>
 
             <div>
-              <h3 className="font-display text-2xl font-bold mb-2 text-slate-100">Featured Student BTP & Research Projects</h3>
-              <p className="text-sm text-slate-400 mb-6">Highlighted B.Tech and Interdisciplinary projects guided by IIT Bombay CE faculty.</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Featured Student Research</span>
+              <h3 className="font-display text-2xl font-extrabold text-neutral-950 tracking-tight mt-1 mb-2">
+                Featured Student BTP & Interdisciplinary Projects
+              </h3>
+              <p className="text-sm text-neutral-600 mb-6">
+                Highlighted B.Tech and Interdisciplinary projects guided by IIT Bombay CE faculty.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {projects.map(p => (
-                  <div key={p.id} className="bg-[#111827] rounded-xl p-6 hover-lift cursor-pointer border border-slate-800" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.08)' }}
-                    onClick={() => setModal({ item: p, type: 'project' })}>
-                    <h4 className="font-semibold text-slate-200 mb-1 text-base">{p.title}</h4>
-                    <p className="text-xs font-semibold mb-1" style={{ color: 'var(--color-accent)' }}>{p.student}</p>
-                    <p className="text-xs text-slate-400 mb-3">Advisor: {p.professor} · {p.year}</p>
-                    <p className="text-sm text-slate-300 line-clamp-2 leading-relaxed">{p.description}</p>
-                    <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-slate-300 hover:text-white">
-                      Read full abstract <ChevronRight size={12} />
+                  <div
+                    key={p.id}
+                    className="bg-white rounded-3xl p-6 hover-lift cursor-pointer border border-neutral-200/80 shadow-2xs hover:border-neutral-300 transition-all"
+                    onClick={() => setModal({ item: p, type: 'project' })}
+                  >
+                    <h4 className="font-bold text-neutral-900 mb-1.5 text-base">{p.title}</h4>
+                    <p className="text-xs font-semibold text-neutral-800 mb-1">Student: {p.student}</p>
+                    <p className="text-xs text-neutral-500 mb-3">Advisor: {p.professor} · {p.year}</p>
+                    <p className="text-xs sm:text-sm text-neutral-600 line-clamp-2 leading-relaxed">{p.description}</p>
+                    <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-neutral-900 hover:gap-1.5 transition-all">
+                      <span>Read abstract</span>
+                      <ChevronRight size={12} />
                     </span>
                   </div>
                 ))}
@@ -232,46 +336,54 @@ export default function Opportunities() {
 
         {/* Tab 2: Scholarships */}
         {activeTab === 2 && (
-          <div className="bg-[#111827] rounded-xl overflow-hidden border border-slate-800" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.08)' }}>
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="text-white text-left" style={{ backgroundColor: 'rgba(var(--color-accent-rgb),0.15)' }}>
-                  <th className="p-4 font-semibold">Scholarship / Fellowship</th>
-                  <th className="p-4 font-semibold hidden md:table-cell">Eligibility</th>
-                  <th className="p-4 font-semibold">Deadline</th>
-                  <th className="p-4 font-semibold">Grant / Stipend</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-800">
-                {scholarships.map((s, i) => (
-                  <tr key={s.name} className="hover:bg-slate-800/60 transition-colors" style={{ backgroundColor: i % 2 === 0 ? '#0b1120' : '#111827' }}>
-                    <td className="p-4 font-medium text-slate-200">{s.name}</td>
-                    <td className="p-4 text-slate-300 hidden md:table-cell text-xs">{s.eligibility}</td>
-                    <td className="p-4 text-slate-400">{s.deadline}</td>
-                    <td className="p-4 font-semibold" style={{ color: 'var(--color-accent)' }}>{s.amount}</td>
+          <div className="bg-white rounded-3xl overflow-hidden border border-neutral-200/80 shadow-2xs">
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs sm:text-sm">
+                <thead>
+                  <tr className="text-neutral-700 text-left border-b border-neutral-200 bg-neutral-50/70">
+                    <th className="p-4 font-bold">Scholarship / Fellowship</th>
+                    <th className="p-4 font-bold hidden md:table-cell">Eligibility</th>
+                    <th className="p-4 font-bold">Deadline</th>
+                    <th className="p-4 font-bold">Grant / Stipend</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-neutral-100">
+                  {scholarships.map((s, i) => (
+                    <tr key={s.name} className="hover:bg-neutral-50/50 transition-colors">
+                      <td className="p-4 font-bold text-neutral-900">{s.name}</td>
+                      <td className="p-4 text-neutral-600 hidden md:table-cell text-xs leading-relaxed">{s.eligibility}</td>
+                      <td className="p-4 text-neutral-500 font-mono text-xs">{s.deadline}</td>
+                      <td className="p-4 font-bold text-neutral-900">{s.amount}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
 
         {/* Tab 3: Competitions */}
         {activeTab === 3 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {competitions.map(comp => (
-              <div key={comp.id} className="bg-[#111827] rounded-xl p-6 hover-lift cursor-pointer group border border-slate-800 flex flex-col justify-between" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.08)' }}
-                onClick={() => setModal({ item: comp, type: 'competition' })}>
+              <div
+                key={comp.id}
+                className="bg-white rounded-3xl p-6 hover-lift cursor-pointer group border border-neutral-200/80 shadow-2xs hover:border-neutral-300 flex flex-col justify-between transition-all"
+                onClick={() => setModal({ item: comp, type: 'competition' })}
+              >
                 <div>
-                  <span className="text-xs font-semibold px-2.5 py-1 rounded-full" style={{ backgroundColor: 'rgba(var(--color-accent-rgb),0.15)', color: 'var(--color-accent)' }}>
+                  <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-800 border border-neutral-200/60">
                     {comp.category}
                   </span>
-                  <h4 className="font-semibold text-slate-200 mt-3 mb-1 text-lg group-hover:underline">{comp.name}</h4>
-                  <p className="text-xs text-slate-400 mb-3">{comp.organizer}</p>
-                  <p className="text-sm text-slate-300 line-clamp-3 leading-relaxed">{comp.description}</p>
+                  <h4 className="font-bold text-neutral-900 mt-3 mb-1 text-base group-hover:text-black">
+                    {comp.name}
+                  </h4>
+                  <p className="text-xs text-neutral-500 mb-3">{comp.organizer}</p>
+                  <p className="text-xs sm:text-sm text-neutral-600 line-clamp-3 leading-relaxed">{comp.description}</p>
                 </div>
-                <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-slate-300 group-hover:text-white">
-                  View details <ChevronRight size={12} />
+                <span className="mt-5 inline-flex items-center gap-1 text-xs font-bold text-neutral-900 group-hover:gap-1.5 transition-all">
+                  <span>View details</span>
+                  <ChevronRight size={12} />
                 </span>
               </div>
             ))}
@@ -283,3 +395,4 @@ export default function Opportunities() {
     </div>
   )
 }
+

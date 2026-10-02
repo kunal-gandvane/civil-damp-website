@@ -169,65 +169,78 @@ export default function BlogDetail() {
 
   if (!blog) {
     return (
-      <div className="page-fade pt-16 min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-6xl mb-4">404</p>
-          <h2 className="font-display text-2xl font-bold text-slate-200 mb-4">Blog post not found</h2>
-          <Link to="/blogs" className="px-6 py-3 rounded-lg text-white font-semibold" style={{ backgroundColor: 'rgba(var(--color-accent-rgb),0.15)' }}>
-            Back to Blogs
+      <div className="page-fade pt-24 min-h-screen flex items-center justify-center bg-[#faf9f5]">
+        <div className="text-center p-8 bg-white rounded-3xl border border-neutral-200/80 shadow-sm max-w-md">
+          <p className="font-mono text-5xl font-extrabold text-neutral-300 mb-2">404</p>
+          <h2 className="font-display text-2xl font-bold text-neutral-900 mb-2">Blog post not found</h2>
+          <p className="text-sm text-neutral-500 mb-6">The article you are looking for doesn't exist or has moved.</p>
+          <Link
+            to="/opportunities"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-neutral-900 text-white text-xs font-semibold hover:bg-neutral-800 transition-colors"
+          >
+            ← Back to Opportunities & Blogs
           </Link>
         </div>
       </div>
     )
   }
 
-  const color = categoryColors[blog.category] || 'var(--color-primary)'
   const content = blogContent[blogId] || blog.excerpt
 
   // Related blogs (same category, excluding current)
   const related = blogs.filter(b => b.category === blog.category && b.id !== blog.id).slice(0, 2)
 
   return (
-    <div className="page-fade pt-16">
-      {/* Hero Banner */}
-      <div className="py-16 text-white text-center" style={{ backgroundColor: color }}>
-        <div className="max-w-3xl mx-auto px-4">
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 bg-[#111827]/20 border border-white/30">
-            {blog.category}
-          </span>
-          <h1 className="font-display text-3xl sm:text-4xl font-bold mb-6 leading-tight">{blog.title}</h1>
-          <div className="flex items-center justify-center flex-wrap gap-4 text-sm text-white/80">
-            <span className="flex items-center gap-1.5"><User size={14} /> {blog.author}</span>
-            <span className="flex items-center gap-1.5"><Tag size={14} /> {blog.batch}</span>
-            <span className="flex items-center gap-1.5"><Calendar size={14} /> {blog.date}</span>
+    <div className="page-fade pt-24 pb-20 min-h-screen bg-[#faf9f5]">
+      {/* Editorial Creso-style Hero */}
+      <section className="relative overflow-hidden creso-hero-glow pt-8 pb-14 border-b border-neutral-200/70">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-neutral-200/90 shadow-2xs text-xs font-semibold text-neutral-800 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+            <span>{blog.category}</span>
+          </div>
+
+          <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-neutral-900 tracking-tight leading-[1.2] mb-6">
+            {blog.title}
+          </h1>
+
+          <div className="flex items-center justify-center flex-wrap gap-3 text-xs text-neutral-600 font-medium">
+            <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-neutral-200/70">
+              <User size={13} className="text-neutral-500" /> {blog.author}
+            </span>
+            <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-neutral-200/70">
+              <Tag size={13} className="text-neutral-500" /> {blog.batch}
+            </span>
+            <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-neutral-200/70">
+              <Calendar size={13} className="text-neutral-500" /> {blog.date}
+            </span>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Back button */}
         <button
           onClick={() => navigate(-1)}
-          className="inline-flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-white mb-8 transition-colors group"
-          style={{ '--navy': 'var(--color-primary)' }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-neutral-200/80 text-xs font-semibold text-neutral-700 hover:text-neutral-900 shadow-2xs hover:shadow-xs mb-8 transition-all group cursor-pointer"
         >
-          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-          Back
+          <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+          <span>Back</span>
         </button>
 
         {/* Article Body */}
-        <article className="bg-[#111827] rounded-xl p-8 sm:p-12 prose-custom" style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.08)' }}>
-          {/* Excerpt / Lead */}
-          <p className="text-lg leading-relaxed font-medium mb-8 pb-8 border-b border-slate-800" style={{ color: '#374151' }}>
-            {blog.excerpt}
-          </p>
+        <article className="bg-white rounded-3xl p-8 sm:p-14 border border-neutral-200/80 shadow-[0_4px_24px_rgb(0,0,0,0.03)]">
+          {/* Excerpt / Lead paragraph */}
+          <div className="text-lg sm:text-xl leading-relaxed text-neutral-800 font-serif italic mb-8 pb-8 border-b border-neutral-100">
+            "{blog.excerpt}"
+          </div>
 
-          {/* Full content — render markdown-like formatting */}
-          <div className="space-y-5">
+          {/* Full content with structured typography */}
+          <div className="space-y-6">
             {content.split('\n\n').map((para, i) => {
               if (para.startsWith('**') && para.endsWith('**')) {
                 return (
-                  <h3 key={i} className="font-display text-xl font-bold mt-8 mb-3" style={{ color: '#f1f5f9' }}>
+                  <h3 key={i} className="font-display text-xl sm:text-2xl font-bold text-neutral-900 pt-6 mb-2 border-t border-neutral-100 first:border-none first:pt-0">
                     {para.replace(/\*\*/g, '')}
                   </h3>
                 )
@@ -235,10 +248,10 @@ export default function BlogDetail() {
               // Inline bold: **text**
               const parts = para.split(/(\*\*[^*]+\*\*)/)
               return (
-                <p key={i} className="text-slate-200 leading-relaxed text-base">
+                <p key={i} className="text-neutral-700 leading-relaxed text-base">
                   {parts.map((part, j) =>
                     part.startsWith('**') && part.endsWith('**')
-                      ? <strong key={j} style={{ color: '#f1f5f9' }}>{part.replace(/\*\*/g, '')}</strong>
+                      ? <strong key={j} className="font-semibold text-neutral-900">{part.replace(/\*\*/g, '')}</strong>
                       : part
                   )}
                 </p>
@@ -248,47 +261,58 @@ export default function BlogDetail() {
         </article>
 
         {/* Author Card */}
-        <div className="mt-8 p-6 bg-[#111827] rounded-xl flex items-center gap-4" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.08)' }}>
-          <div className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0"
-            style={{ backgroundColor: color }}>
+        <div className="mt-8 p-6 sm:p-8 bg-white rounded-3xl border border-neutral-200/80 shadow-2xs flex items-center gap-4">
+          <div className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-base shrink-0 bg-neutral-900 border border-neutral-700 shadow-xs">
             {blog.author.split(' ').map(w => w[0]).join('').slice(0, 2)}
           </div>
           <div>
-            <p className="font-semibold text-slate-200">{blog.author}</p>
-            <p className="text-sm text-slate-400">{blog.batch} · Civil Engineering, IIT Bombay</p>
+            <p className="font-bold text-neutral-900 text-base">{blog.author}</p>
+            <p className="text-xs text-neutral-500 font-medium">{blog.batch} · Department of Civil Engineering, IIT Bombay</p>
           </div>
         </div>
 
         {/* Related Posts */}
         {related.length > 0 && (
-          <div className="mt-12">
-            <h3 className="font-display text-2xl font-bold mb-6" style={{ color: '#f1f5f9' }}>More in {blog.category}</h3>
+          <div className="mt-14">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="font-display text-2xl font-bold text-neutral-900">
+                More in {blog.category}
+              </h3>
+              <Link to="/opportunities" className="text-xs font-semibold text-amber-700 hover:underline">
+                View all →
+              </Link>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {related.map(rb => (
-                <Link key={rb.id} to={`/blogs/${rb.id}`}
-                  className="bg-[#111827] rounded-lg overflow-hidden hover-lift block"
-                  style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.08)' }}>
-                  <div className="h-2" style={{ backgroundColor: color }} />
-                  <div className="p-5">
-                    <h4 className="font-semibold text-slate-200 mb-2 leading-snug text-sm">{rb.title}</h4>
-                    <p className="text-xs text-slate-400 mb-2">{rb.author} · {rb.date}</p>
-                    <p className="text-sm text-slate-400 line-clamp-2">{rb.excerpt}</p>
-                    <span className="mt-3 inline-block text-xs font-semibold hover:underline" style={{ color: '#f1f5f9' }}>
-                      Read More →
-                    </span>
-                  </div>
+                <Link
+                  key={rb.id}
+                  to={`/blogs/${rb.id}`}
+                  className="bg-white rounded-2xl p-6 border border-neutral-200/80 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all block group"
+                >
+                  <span className="text-[11px] font-semibold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200 inline-block mb-3">
+                    {rb.category}
+                  </span>
+                  <h4 className="font-bold text-neutral-900 mb-2 leading-snug text-sm group-hover:text-amber-800 transition-colors">
+                    {rb.title}
+                  </h4>
+                  <p className="text-xs text-neutral-400 mb-3">{rb.author} · {rb.date}</p>
+                  <p className="text-xs text-neutral-600 line-clamp-2 leading-relaxed">{rb.excerpt}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-neutral-900 group-hover:translate-x-1 transition-transform">
+                    Read Story →
+                  </span>
                 </Link>
               ))}
             </div>
           </div>
         )}
 
-        {/* Back to Blogs */}
-        <div className="mt-10 text-center">
-          <Link to="/blogs"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg text-white font-semibold transition-all hover:opacity-90"
-            style={{ backgroundColor: 'rgba(var(--color-accent-rgb),0.15)' }}>
-            ← All Blogs
+        {/* Back to Opportunities */}
+        <div className="mt-12 text-center">
+          <Link
+            to="/opportunities"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-neutral-900 text-white text-xs font-semibold hover:bg-neutral-800 transition-colors shadow-xs"
+          >
+            ← Back to Opportunities & Experiences
           </Link>
         </div>
       </div>

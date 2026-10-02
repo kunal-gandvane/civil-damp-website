@@ -1,38 +1,38 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Menu, X, ChevronDown, ArrowUpRight } from 'lucide-react'
 
 const navItems = [
   { label: 'Home', path: '/' },
-  { label: 'About DAMP', path: '/about' },
+  { label: 'About', path: '/about' },
   {
     label: 'Academics', path: '/academics',
     children: [
-      { label: 'Curriculum', path: '/academics', tab: 0 },
-      { label: 'Specializations & Labs', path: '/academics', tab: 1 },
-      { label: 'Courses & Reviews', path: '/academics', tab: 2 },
-      { label: 'Academic Resources', path: '/academics', tab: 3 },
+      { label: 'Curriculum & Structure', path: '/academics', tab: 0 },
+      { label: 'Specializations & 17 Labs', path: '/academics', tab: 1 },
+      { label: 'Course Reviews (42+)', path: '/academics', tab: 2 },
+      { label: 'Academic Resources & Archive', path: '/academics', tab: 3 },
     ],
   },
   {
     label: 'Opportunities', path: '/opportunities',
     children: [
       { label: 'Internship Experiences', path: '/opportunities', tab: 0 },
-      { label: 'Research', path: '/opportunities', tab: 1 },
-      { label: 'Scholarships', path: '/opportunities', tab: 2 },
-      { label: 'Competitions', path: '/opportunities', tab: 3 },
+      { label: 'Faculty Research Profiles', path: '/opportunities', tab: 1 },
+      { label: 'Scholarships & Fellowships', path: '/opportunities', tab: 2 },
+      { label: 'Competitions & Hackathons', path: '/opportunities', tab: 3 },
     ],
   },
   {
     label: 'Community', path: '/community',
     children: [
-      { label: 'Clubs', path: '/community', tab: 0 },
-      { label: 'Events', path: '/community', tab: 1 },
-      { label: 'Achievements', path: '/community', tab: 2 },
-      { label: 'Alumni', path: '/community', tab: 3 },
+      { label: 'Societies & CEA', path: '/community', tab: 0 },
+      { label: 'Events & AAKAAR Fest', path: '/community', tab: 1 },
+      { label: 'Department Achievements', path: '/community', tab: 2 },
+      { label: 'Distinguished Alumni', path: '/community', tab: 3 },
     ],
   },
-  { label: 'DAMP Team', path: '/team' },
+  { label: 'Mentors', path: '/team' },
   { label: 'Resources', path: '/resources' },
   { label: 'Contact', path: '/contact' },
 ]
@@ -78,58 +78,72 @@ export default function Navbar() {
   }
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50 transition-transform duration-300"
+    <header
+      className="fixed top-3 left-0 right-0 z-50 flex justify-center px-3 sm:px-6 transition-all duration-300 pointer-events-none"
       style={{
-        backgroundColor: 'rgba(11,17,32,0.97)',
-        backdropFilter: 'blur(12px)',
-        boxShadow: '0 1px 8px rgba(0,0,0,0.08)',
-        transform: visible ? 'translateY(0)' : 'translateY(-100%)',
+        transform: visible ? 'translateY(0)' : 'translateY(-120%)',
       }}
     >
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div
+        className="w-full max-w-6xl pointer-events-auto bg-white/90 backdrop-blur-xl border border-neutral-200/90 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.06)] px-3 sm:px-5 py-2 transition-all duration-200"
+      >
+        <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 shrink-0">
-            <img src="/logo.png" alt="Civil DAMP Logo" className="w-10 h-10 object-contain rounded-lg bg-black" />
-            <div>
-              <span className="font-display text-sm font-bold" style={{ color: '#f1f5f9' }}>Civil DAMP</span>
-              <span className="text-xs text-slate-500 ml-1.5 hidden sm:inline">| IIT Bombay</span>
+          <Link to="/" className="flex items-center gap-2.5 shrink-0 pl-1 group">
+            <div className="w-8 h-8 rounded-full bg-neutral-900 flex items-center justify-center text-white font-bold text-xs shadow-xs group-hover:scale-105 transition-transform">
+              CE
+            </div>
+            <div className="flex items-baseline gap-1.5">
+              <span className="font-extrabold text-base tracking-tight text-neutral-900">
+                civil<span className="text-neutral-400 font-medium">damp</span>
+              </span>
+              <span className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-neutral-100 text-neutral-600 hidden sm:inline-block border border-neutral-200/60">
+                IIT Bombay
+              </span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-0.5">
+          <nav className="hidden lg:flex items-center gap-0.5">
             {navItems.map(item => (
-              <div key={item.label} className="relative"
+              <div
+                key={item.label}
+                className="relative"
                 onMouseEnter={() => item.children && handleDropdownEnter(item.label)}
-                onMouseLeave={() => item.children && handleDropdownLeave()}>
+                onMouseLeave={() => item.children && handleDropdownLeave()}
+              >
                 <Link
                   to={item.path}
-                  className="px-3 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-0.5 hover:text-white"
-                  style={{
-                    color: isActive(item.path) ? 'var(--color-accent)' : '#94a3b8',
-                    backgroundColor: isActive(item.path) ? 'rgba(201,168,76,0.1)' : 'transparent',
-                  }}
+                  className={`px-3 py-1.5 text-xs font-semibold rounded-full transition-all duration-150 flex items-center gap-1 ${
+                    isActive(item.path)
+                      ? 'bg-neutral-900 text-white shadow-xs'
+                      : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100/80'
+                  }`}
                 >
                   {item.label}
                   {item.children && (
-                    <ChevronDown size={13} className={`transition-transform ${hoveredDropdown === item.label ? 'rotate-180' : ''}`} />
+                    <ChevronDown
+                      size={12}
+                      className={`transition-transform duration-200 ${
+                        hoveredDropdown === item.label ? 'rotate-180' : ''
+                      } ${isActive(item.path) ? 'text-white' : 'text-neutral-400'}`}
+                    />
                   )}
                 </Link>
 
                 {/* Desktop Dropdown */}
                 {item.children && hoveredDropdown === item.label && (
-                  <div className="absolute top-full left-0 pt-1 z-50" style={{ minWidth: '200px' }}>
-                    <div className="bg-[#111827] rounded-xl py-2 shadow-xl border border-slate-800"
-                      style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.12)' }}>
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50 min-w-[240px]">
+                    <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-1.5 shadow-xl border border-neutral-200/80 animate-in fade-in zoom-in-95 duration-150">
                       {item.children.map(child => (
-                        <Link key={child.label}
+                        <Link
+                          key={child.label}
                           to={`${child.path}?tab=${child.tab}`}
-                          className="block px-4 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-[#0b1120] transition-colors"
-                          style={{ '--navy': 'var(--color-primary)' }}
-                          onClick={() => setHoveredDropdown(null)}>
-                          {child.label}
+                          className="flex items-center justify-between px-3.5 py-2 text-xs font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 rounded-xl transition-colors group"
+                          onClick={() => setHoveredDropdown(null)}
+                        >
+                          <span>{child.label}</span>
+                          <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity text-neutral-400" />
                         </Link>
                       ))}
                     </div>
@@ -137,40 +151,48 @@ export default function Navbar() {
                 )}
               </div>
             ))}
-          </div>
+          </nav>
 
           {/* Mobile hamburger */}
-          <button className="lg:hidden p-2 rounded-lg hover:bg-slate-800 transition-colors"
-            onClick={() => setMobileOpen(!mobileOpen)}>
-            {mobileOpen ? <X size={22} style={{ color: '#f1f5f9' }} /> : <Menu size={22} style={{ color: '#f1f5f9' }} />}
+          <button
+            className="lg:hidden p-2 rounded-full hover:bg-neutral-100 text-neutral-700 transition-colors"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Dropdown */}
       {mobileOpen && (
-        <div className="lg:hidden bg-[#111827] border-t border-slate-800 max-h-[80vh] overflow-y-auto"
-          style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.1)' }}>
-          <div className="px-4 py-3 space-y-0.5">
+        <div className="lg:hidden absolute top-full left-3 right-3 mt-2 bg-white/98 backdrop-blur-2xl rounded-3xl p-4 shadow-2xl border border-neutral-200/90 max-h-[82vh] overflow-y-auto pointer-events-auto animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="space-y-1">
             {navItems.map(item => (
-              <div key={item.label}>
+              <div key={item.label} className="border-b border-neutral-100 last:border-b-0 pb-1">
                 {item.children ? (
                   <>
                     <button
-                      className="w-full flex items-center justify-between px-3 py-3 text-sm font-medium rounded-lg transition-colors hover:text-white"
-                      style={{ color: isActive(item.path) ? 'var(--color-accent)' : '#94a3b8' }}
+                      className={`w-full flex items-center justify-between px-3 py-2.5 text-sm font-semibold rounded-xl transition-colors ${
+                        isActive(item.path) ? 'text-neutral-900 bg-neutral-100' : 'text-neutral-700 hover:bg-neutral-50'
+                      }`}
                       onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
                     >
-                      {item.label}
-                      <ChevronDown size={15} className={`transition-transform ${mobileExpanded === item.label ? 'rotate-180' : ''}`} />
+                      <span>{item.label}</span>
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-200 ${mobileExpanded === item.label ? 'rotate-180' : ''}`}
+                      />
                     </button>
                     {mobileExpanded === item.label && (
-                      <div className="ml-4 border-l-2 pl-3 mb-2" style={{ borderColor: 'rgba(var(--color-accent-rgb),0.3)' }}>
+                      <div className="pl-4 pr-1 py-1 space-y-1 bg-neutral-50/80 rounded-xl my-1">
                         {item.children.map(child => (
-                          <Link key={child.label}
+                          <Link
+                            key={child.label}
                             to={`${child.path}?tab=${child.tab}`}
-                            className="block px-3 py-2 text-sm text-slate-400 hover:text-white rounded-lg"
-                            onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}>
+                            className="block px-3 py-2 text-xs font-medium text-neutral-600 hover:text-neutral-900 rounded-lg hover:bg-white transition-colors"
+                            onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
+                          >
                             {child.label}
                           </Link>
                         ))}
@@ -178,13 +200,13 @@ export default function Navbar() {
                     )}
                   </>
                 ) : (
-                  <Link to={item.path}
-                    className="block px-3 py-3 text-sm font-medium rounded-lg transition-colors hover:text-white"
-                    style={{
-                      color: isActive(item.path) ? 'var(--color-accent)' : '#94a3b8',
-                      backgroundColor: isActive(item.path) ? 'rgba(201,168,76,0.1)' : 'transparent',
-                    }}
-                    onClick={() => setMobileOpen(false)}>
+                  <Link
+                    to={item.path}
+                    className={`block px-3 py-2.5 text-sm font-semibold rounded-xl transition-colors ${
+                      isActive(item.path) ? 'text-neutral-900 bg-neutral-100' : 'text-neutral-700 hover:bg-neutral-50'
+                    }`}
+                    onClick={() => setMobileOpen(false)}
+                  >
                     {item.label}
                   </Link>
                 )}
@@ -193,6 +215,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </nav>
+    </header>
   )
 }
