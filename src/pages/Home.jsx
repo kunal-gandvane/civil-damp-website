@@ -71,7 +71,6 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <ScrollReveal animation="fade-up">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Mentorship Initiative</span>
               <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-neutral-950 tracking-tight mt-1 mb-5">
                 What is Civil DAMP?
               </h2>
