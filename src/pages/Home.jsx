@@ -59,10 +59,6 @@ export default function Home() {
       <section className="py-8 sm:py-10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal animation="fade-up">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-amber-50 border border-amber-200 text-amber-800 shadow-2xs mb-4">
-              <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-              <span>Part of Student Mentorship Programme (SMP) · IIT Bombay</span>
-            </div>
             <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
               Civil DAMP operates under the umbrella of the Student Mentorship Programme (SMP) at IIT Bombay — the institute's flagship peer mentorship framework designed to guide every student through their academic journey.
             </p>
