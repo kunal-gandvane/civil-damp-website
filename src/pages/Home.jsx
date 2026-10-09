@@ -78,52 +78,9 @@ export default function Home() {
                 Civil DAMP (Department Academic Mentorship Program) is a student-driven initiative within the Department of Civil Engineering at IIT Bombay. Established in 2019, it bridges the gap between seniors and juniors through structured peer mentorship.
               </p>
               <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-6">
-                We provide resources ranging from course reviews and research booklets to internship blogs and semester exchange chronicles. Our 50+ active mentors work across four subgroups to ensure comprehensive support for every CE student.
+                We provide resources ranging from course reviews and research booklets to internship blogs and semester exchange chronicles. Our 30+ active mentors work across four subgroups to ensure comprehensive support for every CE student.
               </p>
-              <div className="space-y-3">
-                {[
-                  'Structured 1-on-1 senior-to-junior mentor pairing',
-                  'Curated archive of previous year question papers & lecture notes',
-                  'Direct guidance on 7 department specializations & research labs',
-                  'Active alumni mentorship across core engineering, tech & consulting',
-                ].map((item, i) => (
-                  <ScrollReveal key={item} animation="fade-left" delay={i * 60}>
-                    <div className="flex items-center gap-2.5">
-                      <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
-                      <span className="text-xs sm:text-sm text-neutral-700 font-medium">{item}</span>
-                    </div>
-                  </ScrollReveal>
-                ))}
-              </div>
             </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== HOW DAMP MENTORSHIP WORKS ===== */}
-      <section className="py-16 sm:py-20 bg-[#faf9f5]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <ScrollReveal animation="fade-up">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">The Process</span>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-neutral-950 tracking-tight mt-1 mb-12">
-              How DAMP Mentorship Works
-            </h2>
-          </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {steps.map(({ step, icon: Icon, title, desc }, i) => (
-              <ScrollReveal key={step} animation="fade-up" delay={i * 100}>
-                <div className="p-8 rounded-3xl bg-white border border-neutral-200/80 hover-lift text-center flex flex-col items-center h-full shadow-2xs">
-                  <div className="w-14 h-14 rounded-2xl bg-[#faf9f5] border border-neutral-200/80 flex items-center justify-center text-neutral-900 shadow-2xs mb-5 relative">
-                    <Icon size={24} />
-                    <span className="absolute -top-2 -right-2 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-neutral-900 text-white">
-                      {step}
-                    </span>
-                  </div>
-                  <h3 className="font-bold text-neutral-900 text-base mb-2">{title}</h3>
-                  <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">{desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
           </div>
         </div>
       </section>
