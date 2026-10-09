@@ -60,7 +60,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal animation="fade-up">
             <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-              Civil DAMP operates under the umbrella of the Student Mentorship Programme (SMP) at IIT Bombay — the institute's flagship peer mentorship framework designed to guide every student through their academic journey.
+              Civil DAMP operates under the umbrella of the Student Mentorship Programme (SMP) at IIT Bombay. The institute's flagship peer mentorship framework designed to guide every student through their academic journey.
             </p>
           </ScrollReveal>
         </div>
