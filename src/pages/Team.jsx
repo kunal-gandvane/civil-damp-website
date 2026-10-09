@@ -84,9 +84,13 @@ export default function Team() {
                   height="340px"
                   front={
                     <>
-                      <div className="w-20 h-20 rounded-full flex items-center justify-center text-neutral-900 text-xl font-bold mx-auto mb-4 bg-neutral-100 border border-neutral-200 shadow-2xs">
-                        {head.name.split(' ').map(w => w[0]).join('')}
-                      </div>
+                      {head.photo ? (
+                        <img src={head.photo} alt={head.name} className="w-20 h-20 rounded-full object-cover mx-auto mb-4 border border-neutral-200 shadow-2xs" />
+                      ) : (
+                        <div className="w-20 h-20 rounded-full flex items-center justify-center text-neutral-900 text-xl font-bold mx-auto mb-4 bg-neutral-100 border border-neutral-200 shadow-2xs">
+                          {head.name.split(' ').map(w => w[0]).join('')}
+                        </div>
+                      )}
                       <h3 className="font-display font-bold text-xl text-neutral-900">{head.name}</h3>
                       <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold mt-2 mb-1">
                         {head.role}
@@ -153,9 +157,13 @@ export default function Team() {
                           height="320px"
                           front={
                             <>
-                              <div className="w-16 h-16 rounded-full flex items-center justify-center text-white text-lg font-bold mb-4 bg-neutral-900 border border-neutral-700 shadow-xs">
-                                {head.name.split(' ').map(w => w[0]).join('')}
-                              </div>
+                              {head.photo ? (
+                                <img src={head.photo} alt={head.name} className="w-16 h-16 rounded-full object-cover mb-4 border border-neutral-700 shadow-xs" />
+                              ) : (
+                                <div className="w-16 h-16 rounded-full flex items-center justify-center text-white text-lg font-bold mb-4 bg-neutral-900 border border-neutral-700 shadow-xs">
+                                  {head.name.split(' ').map(w => w[0]).join('')}
+                                </div>
+                              )}
                               <h4 className="font-bold text-neutral-900 text-base">{head.name}</h4>
                               <p className="text-xs font-semibold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200 mt-2 mb-1">
                                 {head.subgroup} Head
@@ -212,9 +220,13 @@ export default function Team() {
                           height="230px"
                           front={
                             <>
-                              <div className="w-12 h-12 rounded-full flex items-center justify-center text-neutral-800 text-sm font-bold mb-3 bg-neutral-100 border border-neutral-200 shadow-2xs">
-                                {mentor.name.split(' ').map(w => w[0]).join('')}
-                              </div>
+                              {mentor.photo ? (
+                                <img src={mentor.photo} alt={mentor.name} className="w-12 h-12 rounded-full object-cover mb-3 border border-neutral-200 shadow-2xs" />
+                              ) : (
+                                <div className="w-12 h-12 rounded-full flex items-center justify-center text-neutral-800 text-sm font-bold mb-3 bg-neutral-100 border border-neutral-200 shadow-2xs">
+                                  {mentor.name.split(' ').map(w => w[0]).join('')}
+                                </div>
+                              )}
                               <h4 className="font-bold text-neutral-900 text-sm">{mentor.name}</h4>
                               <p className="text-xs text-neutral-500 font-mono mt-1">{mentor.year}</p>
                               <span className="text-[10px] text-neutral-400 mt-3">Flip ↻</span>
