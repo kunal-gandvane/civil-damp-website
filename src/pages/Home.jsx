@@ -92,7 +92,7 @@ export default function Home() {
             <div className="text-center max-w-2xl mx-auto mb-12">
               <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Core Pillars</span>
               <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-neutral-950 tracking-tight mt-1 mb-3">
-                Everything You Need for Civil Engineering
+                Everything You Need
               </h2>
               <p className="text-neutral-600 text-sm sm:text-base">
                 From academic course reviews to senior mentor pairings, explore every pillar of your IIT Bombay journey.
@@ -126,94 +126,6 @@ export default function Home() {
               </ScrollReveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ===== 7 CORE GRADUATE SPECIALIZATIONS ===== */}
-      <section className="py-16 sm:py-20 bg-[#faf9f5] border-t border-neutral-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal animation="fade-up">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
-              <div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Advanced Research</span>
-                <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-neutral-950 tracking-tight mt-1">
-                  7 Core Graduate Specializations
-                </h2>
-              </div>
-              <Link
-                to="/academics?tab=1"
-                className="inline-flex items-center gap-1 text-xs font-bold text-neutral-900 hover:underline"
-              >
-                <span>View All 17 Research Labs</span>
-                <ArrowRight size={14} />
-              </Link>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {specializations.slice(0, 6).map((spec, i) => (
-              <ScrollReveal key={spec.id} animation="fade-up" delay={i * 60}>
-                <a
-                  href={spec.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="bg-white rounded-2xl p-5 border border-neutral-200/80 hover:border-neutral-300 hover-lift group block shadow-2xs"
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[11px] font-bold font-mono px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-700 border border-neutral-200/60">
-                      {spec.code} · Est. {spec.established}
-                    </span>
-                    <ExternalLink size={13} className="text-neutral-400 group-hover:text-neutral-900 transition-colors" />
-                  </div>
-                  <h3 className="font-bold text-neutral-900 mb-1.5 text-base group-hover:text-black">
-                    {spec.name}
-                  </h3>
-                  <p className="text-xs text-neutral-600 line-clamp-2 leading-relaxed">
-                    {spec.description}
-                  </p>
-                </a>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== CTA BANNER ===== */}
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal animation="scale">
-            <div className="bg-neutral-950 rounded-3xl sm:rounded-[36px] p-8 sm:p-14 text-white text-center shadow-xl relative overflow-hidden">
-              <div className="absolute inset-0 bg-radial from-neutral-800/40 via-transparent to-transparent pointer-events-none"></div>
-
-              <div className="relative z-10 max-w-2xl mx-auto">
-                <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/10 text-neutral-300 border border-white/10 inline-block mb-4">
-                  Mentorship at IIT Bombay
-                </span>
-                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 text-white">
-                  Need academic guidance or course advice?
-                </h2>
-                <p className="text-neutral-400 text-sm sm:text-base leading-relaxed mb-8 max-w-lg mx-auto">
-                  Reach out to the Civil DAMP team and get matched 1:1 with a senior mentor who has aced your courses, labs, and internship interviews.
-                </p>
-                <div className="flex flex-wrap items-center justify-center gap-3">
-                  <Link
-                    to="/team"
-                    className="inline-flex items-center gap-2 bg-white text-neutral-950 font-bold px-6 py-3 rounded-full text-xs hover:bg-neutral-100 shadow-md hover:shadow-lg transition-all"
-                  >
-                    <Users size={14} />
-                    <span>Meet the Team</span>
-                  </Link>
-                  <Link
-                    to="/academics"
-                    className="inline-flex items-center gap-2 bg-white/10 text-white font-semibold px-6 py-3 rounded-full text-xs border border-white/20 hover:bg-white/15 transition-all"
-                  >
-                    <span>Explore Academics</span>
-                    <ArrowRight size={14} />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
     </div>
