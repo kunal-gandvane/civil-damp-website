@@ -4,7 +4,6 @@ import { Menu, X, ChevronDown, ArrowUpRight } from 'lucide-react'
 
 const navItems = [
   { label: 'Home', path: '/' },
-  { label: 'About', path: '/about' },
   {
     label: 'Academics', path: '/academics',
     children: [
@@ -23,18 +22,7 @@ const navItems = [
       { label: 'Competitions & Hackathons', path: '/opportunities', tab: 3 },
     ],
   },
-  {
-    label: 'Community', path: '/community',
-    children: [
-      { label: 'Societies & CEA', path: '/community', tab: 0 },
-      { label: 'Events & AAKAAR Fest', path: '/community', tab: 1 },
-      { label: 'Department Achievements', path: '/community', tab: 2 },
-      { label: 'Distinguished Alumni', path: '/community', tab: 3 },
-    ],
-  },
-  { label: 'Mentors', path: '/team' },
-  { label: 'Resources', path: '/resources' },
-  { label: 'Contact', path: '/contact' },
+  { label: 'Team', path: '/team' },
 ]
 
 export default function Navbar() {

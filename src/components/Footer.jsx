@@ -70,8 +70,8 @@ export default function Footer() {
             <h3 className="text-xs font-bold text-white uppercase tracking-wider">Navigation</h3>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link to="/about" className="hover:text-white transition-colors flex items-center gap-1">
-                  <span>About DAMP & Department</span>
+                <Link to="/" className="hover:text-white transition-colors flex items-center gap-1">
+                  <span>Home</span>
                 </Link>
               </li>
               <li>
@@ -85,18 +85,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/community" className="hover:text-white transition-colors flex items-center gap-1">
-                  <span>Societies, CEA & AAKAAR</span>
-                </Link>
-              </li>
-              <li>
                 <Link to="/team" className="hover:text-white transition-colors flex items-center gap-1">
-                  <span>Mentorship Team & Faculty</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/resources" className="hover:text-white transition-colors flex items-center gap-1">
-                  <span>Resources & Bookmarks</span>
+                  <span>Meet the Team</span>
                 </Link>
               </li>
             </ul>
