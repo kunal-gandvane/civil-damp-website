@@ -175,10 +175,10 @@ export default function BlogDetail() {
           <h2 className="font-display text-2xl font-bold text-neutral-900 mb-2">Blog post not found</h2>
           <p className="text-sm text-neutral-500 mb-6">The article you are looking for doesn't exist or has moved.</p>
           <Link
-            to="/opportunities"
+            to="/experience"
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-neutral-900 text-white text-xs font-semibold hover:bg-neutral-800 transition-colors"
           >
-            ← Back to Opportunities & Blogs
+            ← Back to Experiences
           </Link>
         </div>
       </div>
@@ -278,7 +278,7 @@ export default function BlogDetail() {
               <h3 className="font-display text-2xl font-bold text-neutral-900">
                 More in {blog.category}
               </h3>
-              <Link to="/opportunities" className="text-xs font-semibold text-amber-700 hover:underline">
+              <Link to="/experience?tab=1" className="text-xs font-semibold text-amber-700 hover:underline">
                 View all →
               </Link>
             </div>
@@ -306,13 +306,13 @@ export default function BlogDetail() {
           </div>
         )}
 
-        {/* Back to Opportunities */}
+        {/* Back to Experiences */}
         <div className="mt-12 text-center">
           <Link
-            to="/opportunities"
+            to="/experience"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-neutral-900 text-white text-xs font-semibold hover:bg-neutral-800 transition-colors shadow-xs"
           >
-            ← Back to Opportunities & Experiences
+            ← Back to Experiences & Blogs
           </Link>
         </div>
       </div>

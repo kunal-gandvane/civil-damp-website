@@ -20,14 +20,16 @@ import { ScrollReveal } from '../components/ScrollAnimations'
 const stats = [
   { icon: Award, value: '#1 in India', label: 'QS World Subject Ranking 2024', link: '/' },
   { icon: Building2, value: '17', label: 'Advanced Research Labs', link: '/academics?tab=1' },
-  { icon: Users, value: '55+', label: 'World-Class Faculty', link: '/opportunities?tab=1' },
+  { icon: Users, value: '55+', label: 'World-Class Faculty', link: '/research-booklet' },
   { icon: GraduationCap, value: '1958', label: 'Founding Dept. of IIT Bombay', link: '/' },
 ]
 
 const explore = [
   { icon: GraduationCap, label: 'Academics & Structure', desc: 'Curriculum paths, 7 graduate specializations & 42+ verified course reviews', path: '/academics' },
-  { icon: Briefcase, label: 'Opportunities & Careers', desc: 'Faculty research profiles, L&T/Arup internships & global scholarships', path: '/opportunities' },
-  { icon: UsersRound, label: 'DAMP Team', desc: 'Connect 1:1 with senior mentors and student department coordinators', path: '/team' },
+  { icon: Briefcase, label: 'Core Experiences & Blogs', desc: 'L&T/Arup core internships, student advice blogs & SemEx chronicles', path: '/experience' },
+  { icon: Building2, label: 'Faculty Research Booklet', desc: 'Official booklet covering 7 research areas, 17 laboratories & advisor profiles', path: '/research-booklet' },
+  { icon: UsersRound, label: 'Meet the Team', desc: 'Connect 1:1 with student mentors and overall coordinators (DAMPC)', path: '/team' },
+  { icon: Award, label: 'Additional Opportunities', desc: 'EERI Seismic Design, AAKAAR fest, ASCE competitions & scholarships', path: '/opportunities' },
 ]
 
 const steps = [
@@ -56,51 +58,121 @@ export default function Home() {
       </section>
 
       {/* ===== PART OF SMP ===== */}
-      <section className="py-8 sm:py-10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-10 border-b border-neutral-200/70">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal animation="fade-up">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-amber-50 border border-amber-200 text-amber-800 shadow-2xs mb-4">
-              <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-              <span>Part of Student Mentorship Programme (SMP) · IIT Bombay</span>
-            </div>
-            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-              Civil DAMP operates under the umbrella of the Student Mentorship Programme (SMP) at IIT Bombay — the institute's flagship peer mentorship framework designed to guide every student through their academic journey.
+            <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2">
+              Institute Affiliation
+            </p>
+            <h2 className="font-display text-xl sm:text-2xl font-bold text-neutral-900 mb-3">
+              Department Wing of the Student Mentorship Programme (SMP)
+            </h2>
+            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed">
+              Civil DAMP functions under the flagship Student Mentorship Programme (SMP) at IIT Bombay, connecting undergraduate and postgraduate students with senior peers for academic transition, lab guidance, and career planning.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
       {/* ===== ABOUT DAMP ===== */}
-      <section className="py-12 sm:py-16 bg-white border-y border-neutral-200/80">
+      <section className="py-16 sm:py-20 bg-white border-b border-neutral-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <ScrollReveal animation="fade-up">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Mentorship Initiative</span>
-              <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-neutral-950 tracking-tight mt-1 mb-5">
-                What is Civil DAMP?
-              </h2>
-              <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-4">
-                Civil DAMP (Department Academic Mentorship Program) is a student-driven initiative within the Department of Civil Engineering at IIT Bombay. Established in 2019, it bridges the gap between seniors and juniors through structured peer mentorship.
-              </p>
-              <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-6">
-                We provide resources ranging from course reviews and research booklets to internship blogs and semester exchange chronicles. Our 50+ active mentors work across four subgroups to ensure comprehensive support for every CE student.
-              </p>
-              <div className="space-y-3">
-                {[
-                  'Structured 1-on-1 senior-to-junior mentor pairing',
-                  'Curated archive of previous year question papers & lecture notes',
-                  'Direct guidance on 7 department specializations & research labs',
-                  'Active alumni mentorship across core engineering, tech & consulting',
-                ].map((item, i) => (
-                  <ScrollReveal key={item} animation="fade-left" delay={i * 60}>
-                    <div className="flex items-center gap-2.5">
-                      <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-6">
+              <ScrollReveal animation="fade-right">
+                <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2">
+                  About the Program
+                </p>
+                <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-neutral-950 tracking-tight mb-5">
+                  What is Civil DAMP?
+                </h2>
+                <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-4">
+                  Civil DAMP (Department Academic Mentorship Program) is a student-driven initiative within the Department of Civil Engineering at IIT Bombay. Established in 2019, it bridges the gap between seniors and juniors through structured peer mentorship.
+                </p>
+                <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-6">
+                  We provide resources ranging from verified course reviews and research booklets to internship chronicles and semester exchange guides. Active mentors work across specialized verticals to ensure accessible support for every CE student.
+                </p>
+                <div className="space-y-3">
+                  {[
+                    'Structured 1-on-1 senior-to-junior mentor pairing',
+                    'Curated archive of previous year question papers & lecture notes',
+                    'Direct guidance on 7 department specializations & research labs',
+                    'Active alumni mentorship across core engineering, tech & consulting',
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-2.5">
+                      <CheckCircle2 size={16} className="text-neutral-900 shrink-0" />
                       <span className="text-xs sm:text-sm text-neutral-700 font-medium">{item}</span>
                     </div>
-                  </ScrollReveal>
-                ))}
-              </div>
-            </ScrollReveal>
+                  ))}
+                </div>
+              </ScrollReveal>
+            </div>
+
+            {/* Mentorship Council Overview (Clean Editorial, No Arrows, Starts with DAMPC) */}
+            <div className="lg:col-span-6 space-y-4">
+              <ScrollReveal animation="fade-left" delay={50}>
+                <div className="p-6 rounded-2xl bg-[#faf9f5] border border-neutral-200">
+                  <div className="flex items-start justify-between gap-4 mb-2">
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">
+                        Council Leadership
+                      </p>
+                      <h3 className="font-display font-bold text-lg text-neutral-950">
+                        DAMPC (Overall Department Coordinators)
+                      </h3>
+                    </div>
+                    <span className="text-xs font-semibold text-neutral-700 bg-white px-3 py-1 rounded-full border border-neutral-200 shrink-0">
+                      Jinay Vora & Vivaan Jain
+                    </span>
+                  </div>
+                  <p className="text-xs text-neutral-600 leading-relaxed">
+                    Lead program strategy, coordinate mentor-mentee pairing, interface with student representatives, and integrate with institute SMP initiatives.
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal animation="fade-left" delay={100}>
+                <div className="p-6 rounded-2xl bg-[#faf9f5] border border-neutral-200">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 mb-1">
+                    Functional Verticals
+                  </p>
+                  <h3 className="font-display font-bold text-lg text-neutral-950 mb-2">
+                    Subgroup Heads
+                  </h3>
+                  <p className="text-xs text-neutral-600 leading-relaxed mb-3">
+                    Coordinate dedicated teams focused on core operational pillars:
+                  </p>
+                  <div className="flex flex-wrap gap-2 text-xs text-neutral-700 font-medium">
+                    <span className="bg-white px-2.5 py-1 rounded-lg border border-neutral-200">Web & Tech</span>
+                    <span className="bg-white px-2.5 py-1 rounded-lg border border-neutral-200">Blog & Media</span>
+                    <span className="bg-white px-2.5 py-1 rounded-lg border border-neutral-200">Events & Panels</span>
+                    <span className="bg-white px-2.5 py-1 rounded-lg border border-neutral-200">Core & Research</span>
+                    <span className="bg-white px-2.5 py-1 rounded-lg border border-neutral-200">Resources</span>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal animation="fade-left" delay={150}>
+                <div className="p-6 rounded-2xl bg-[#faf9f5] border border-neutral-200">
+                  <div className="flex items-start justify-between gap-4 mb-2">
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">
+                        Peer Support Network
+                      </p>
+                      <h3 className="font-display font-bold text-lg text-neutral-950">
+                        DAMP Student Mentors
+                      </h3>
+                    </div>
+                    <span className="text-xs font-semibold text-neutral-700 bg-white px-3 py-1 rounded-full border border-neutral-200 shrink-0">
+                      30+ Senior Guides
+                    </span>
+                  </div>
+                  <p className="text-xs text-neutral-600 leading-relaxed">
+                    Vetted 3rd and 4th-year seniors paired directly with undergraduate cohorts for coursework navigation, tutorial practice, and lab safety advice.
+                  </p>
+                </div>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>
