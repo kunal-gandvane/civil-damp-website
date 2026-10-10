@@ -10,18 +10,13 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
  *   up automatically. The slideshow cycles every `interval` ms (default 5 000).
  */
 
-// Eagerly import every image inside the hero-slides folder.
-// Vite resolves these at build-time so the list is static per build.
-const imageModules = import.meta.glob('/public/hero-slides/*.{jpg,jpeg,png,webp}', {
-  eager: true,
-  query: '?url',
-  import: 'default',
-})
-
-// Sort by filename so ordering is predictable (1.jpg, 2.jpg, …)
-const slides = Object.entries(imageModules)
-  .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
-  .map(([, url]) => url)
+// Slides located in /public/hero-slides/
+const slides = [
+  '/hero-slides/1.jpg',
+  '/hero-slides/2.jpg',
+  '/hero-slides/4.jpeg',
+  '/hero-slides/5.jpg',
+]
 
 export default function HeroSlideshow({ interval = 5000 }) {
   const [current, setCurrent] = useState(0)
