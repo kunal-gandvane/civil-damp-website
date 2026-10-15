@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { MapPin, Clock, X, ChevronRight, ExternalLink, Mail, Sparkles, Award } from 'lucide-react'
+import { MapPin, Clock, X, ChevronRight, ExternalLink, Mail } from 'lucide-react'
 import { internships, scholarships, competitions, professors, projects } from '../data/dummy'
 
 const tabs = ['Internship Experiences', 'Faculty Research Profiles', 'Scholarships & Fellowships', 'Competitions & Fests']
@@ -207,6 +207,8 @@ export default function Opportunities() {
         {/* Tab 1: Research */}
         {activeTab === 1 && (
           <div className="space-y-14">
+            {/* Faculty section */}
+            <div>
               {/* Specialization Filter */}
               <div className="flex flex-wrap gap-1.5 mb-8">
                 {[
@@ -286,8 +288,10 @@ export default function Opportunities() {
                   </div>
                 ))}
               </div>
-            
             </div>
+
+            {/* Featured student projects section */}
+            <div>
               <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Featured Student Research</span>
               <h3 className="font-display text-2xl font-extrabold text-neutral-950 tracking-tight mt-1 mb-2">
                 Featured Student BTP & Interdisciplinary Projects
@@ -332,7 +336,7 @@ export default function Opportunities() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-neutral-100">
-                  {scholarships.map((s, i) => (
+                  {scholarships.map(s => (
                     <tr key={s.name} className="hover:bg-neutral-50/50 transition-colors">
                       <td className="p-4 font-bold text-neutral-900">{s.name}</td>
                       <td className="p-4 text-neutral-600 hidden md:table-cell text-xs leading-relaxed">{s.eligibility}</td>
@@ -379,4 +383,3 @@ export default function Opportunities() {
     </div>
   )
 }
-
