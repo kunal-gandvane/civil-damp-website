@@ -97,18 +97,11 @@ export default function Footer() {
             <h3 className="text-xs font-bold text-white uppercase tracking-wider">Department Office</h3>
             <div className="space-y-2 text-xs text-neutral-400">
               <p className="flex items-center gap-2">
-                <span>📧 Office:</span>
-                <a href="mailto:hod@civil.iitb.ac.in" className="text-neutral-300 hover:text-white hover:underline">
-                  hod@civil.iitb.ac.in
-                </a>
-              </p>
-              <p className="flex items-center gap-2">
                 <span>✉️ Mentorship:</span>
-                <a href="mailto:damp@civil.iitb.ac.in" className="text-neutral-300 hover:text-white hover:underline">
-                  damp@civil.iitb.ac.in
+                <a href="mailto:civildampcs26@gmail.com" className="text-neutral-300 hover:text-white hover:underline">
+                  civildampcs26@gmail.com
                 </a>
               </p>
-              <p>📞 +91-22-2576 7301 / 7300</p>
               <p className="text-neutral-500 pt-1">
                 Department of Civil Engineering<br />
                 Indian Institute of Technology Bombay<br />
