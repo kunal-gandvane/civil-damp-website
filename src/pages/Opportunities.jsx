@@ -287,8 +287,6 @@ export default function Opportunities() {
                 ))}
               </div>
             </div>
-
-            <div>
               <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Featured Student Research</span>
               <h3 className="font-display text-2xl font-extrabold text-neutral-950 tracking-tight mt-1 mb-2">
                 Featured Student BTP & Interdisciplinary Projects
