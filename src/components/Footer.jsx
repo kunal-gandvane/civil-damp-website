@@ -94,7 +94,7 @@ export default function Footer() {
 
           {/* Department Contact */}
           <div className="md:col-span-4 space-y-3">
-            <h3 className="text-xs font-bold text-white uppercase tracking-wider">Department Office</h3>
+            <h3 className="text-xs font-bold text-white uppercase tracking-wider">Contact Details</h3>
             <div className="space-y-2 text-xs text-neutral-400">
               <p className="flex items-center gap-2">
                 <span>✉️ Mentorship:</span>
