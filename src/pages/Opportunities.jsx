@@ -107,15 +107,11 @@ export default function Opportunities() {
       <div className="py-20 sm:py-24 text-center border-b border-neutral-200/80 creso-hero-glow bg-grid-pattern">
         <div className="max-w-4xl mx-auto px-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold mb-4 bg-white/90 border border-neutral-200/90 text-neutral-700 shadow-2xs">
-            <Sparkles size={13} className="text-amber-500" />
             <span>Faculty Research · Internships · Fellowships</span>
           </div>
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-950 tracking-tight mb-4">
             Opportunities & Research
           </h1>
-          <p className="text-base sm:text-lg text-neutral-600 max-w-2xl mx-auto leading-relaxed">
-            Explore faculty research profiles across all 7 disciplines, senior internship stories at L&T and Arup, international fellowships, and national hackathons.
-          </p>
         </div>
       </div>
 
@@ -211,17 +207,6 @@ export default function Opportunities() {
         {/* Tab 1: Research */}
         {activeTab === 1 && (
           <div className="space-y-14">
-            <div>
-              <div className="max-w-3xl mb-6">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Mentorship & Advising</span>
-                <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight mt-1 mb-2">
-                  Faculty Research Profiles across 7 Specializations
-                </h3>
-                <p className="text-sm text-neutral-600 leading-relaxed">
-                  Explore faculty research domains at IIT Bombay Civil Engineering to find potential BTP / M.Tech / Ph.D. advisors and summer research opportunities.
-                </p>
-              </div>
-
               {/* Specialization Filter */}
               <div className="flex flex-wrap gap-1.5 mb-8">
                 {[
