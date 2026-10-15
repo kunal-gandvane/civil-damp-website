@@ -14,20 +14,12 @@ const navItems = [
     ],
   },
   {
-    label: 'Experience', path: '/experience',
+    label: 'Opportunities', path: '/opportunities',
     children: [
-      { label: 'Core Internship Experiences', path: '/experience', tab: 0 },
-      { label: 'Student Blogs', path: '/experience', tab: 1 },
-      { label: 'Semester Exchange (SemEx)', path: '/experience', tab: 2 },
-    ],
-  },
-  { label: 'Research Booklet', path: '/research-booklet' },
-  {
-    label: 'Additional', path: '/opportunities',
-    children: [
-      { label: 'Competitions & Hackathons', path: '/opportunities', tab: 0 },
-      { label: 'Scholarships & Fellowships', path: '/opportunities', tab: 1 },
-      { label: 'International Exchange', path: '/opportunities', tab: 2 },
+      { label: 'Internship Experiences', path: '/opportunities', tab: 0 },
+      { label: 'Faculty Research Profiles', path: '/opportunities', tab: 1 },
+      { label: 'Scholarships & Fellowships', path: '/opportunities', tab: 2 },
+      { label: 'Competitions & Hackathons', path: '/opportunities', tab: 3 },
     ],
   },
   { label: 'Team', path: '/team' },

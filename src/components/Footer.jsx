@@ -80,18 +80,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/experience" className="hover:text-white transition-colors flex items-center gap-1">
-                  <span>Core Experiences & Blogs</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/research-booklet" className="hover:text-white transition-colors flex items-center gap-1">
-                  <span>Faculty Research Booklet</span>
-                </Link>
-              </li>
-              <li>
                 <Link to="/opportunities" className="hover:text-white transition-colors flex items-center gap-1">
-                  <span>Competitions & Fellowships</span>
+                  <span>Internships & Research</span>
                 </Link>
               </li>
               <li>
