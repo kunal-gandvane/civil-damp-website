@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { Star, X, ChevronRight, Search, FileText, Folder, Download, ExternalLink, FlaskConical, Sparkles, BookOpen } from 'lucide-react'
+import { Star, X, ChevronRight, Search, FileText, Folder, Download, ExternalLink, FlaskConical } from 'lucide-react'
 import { courseReviews, curriculum, academicResources, specializations } from '../data/dummy'
 
 const tabs = ['Curriculum Structure', '7 Specializations & Labs', 'Course Reviews (42+)', 'Academic Archive']
@@ -99,7 +99,8 @@ function Modal({ item, type, onClose }) {
 
 export default function Academics() {
   const [searchParams] = useSearchParams()
-  const tabParam = parseInt(searchParams.get('tab')) || 0
+  const rawTab = parseInt(searchParams.get('tab'))
+  const tabParam = rawTab >= 0 && rawTab < tabs.length ? rawTab : 0
   const [activeTab, setActiveTab] = useState(tabParam)
   const [semFilter, setSemFilter] = useState('All')
   const [diffFilter, setDiffFilter] = useState('All')
@@ -111,9 +112,11 @@ export default function Academics() {
   const filtered = courseReviews.filter(c => {
     const matchesSem = semFilter === 'All' || c.semester === parseInt(semFilter)
     const matchesDiff = diffFilter === 'All' || c.difficulty === diffFilter
-    const matchesSearch = c.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          c.code.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          c.professor.toLowerCase().includes(searchQuery.toLowerCase())
+    const q = searchQuery.toLowerCase()
+    const matchesSearch =
+      c.name.toLowerCase().includes(q) ||
+      c.code.toLowerCase().includes(q) ||
+      c.professor.toLowerCase().includes(q)
     return matchesSem && matchesDiff && matchesSearch
   })
 
@@ -153,7 +156,10 @@ export default function Academics() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      
+
+        {/* Tab 0: Curriculum Structure */}
+        {activeTab === 0 && (
+          <div>
             {/* Credit Summary Pills */}
             <div className="flex flex-wrap gap-2 mb-8">
               {Object.entries(typeColors).map(([type, colors]) => (
@@ -207,8 +213,10 @@ export default function Academics() {
             </div>
           </div>
         )}
-   
 
+        {/* Tab 1: Specializations & Labs */}
+        {activeTab === 1 && (
+          <div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {specializations.map(spec => (
                 <div
@@ -287,9 +295,9 @@ export default function Academics() {
 
               <div className="flex items-center relative flex-1 min-w-[220px]">
                 <Search size={14} className="absolute left-3 text-neutral-400" />
-                <input 
-                  type="text" 
-                  placeholder="Search code, course name, professor..." 
+                <input
+                  type="text"
+                  placeholder="Search code, course name, professor..."
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
                   className="w-full text-xs bg-neutral-50 text-neutral-900 border border-neutral-200 rounded-full pl-9 pr-4 py-2 focus:outline-none focus:border-neutral-400"
@@ -299,7 +307,7 @@ export default function Academics() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {filtered.map(c => {
-                const diff = difficultyConfig[c.difficulty]
+                const diff = difficultyConfig[c.difficulty] || { bg: 'rgba(15, 23, 42, 0.08)', text: '#0f172a' }
                 return (
                   <div
                     key={c.id}
@@ -381,4 +389,3 @@ export default function Academics() {
     </div>
   )
 }
-
