@@ -123,15 +123,11 @@ export default function Academics() {
       <div className="py-20 sm:py-24 text-center border-b border-neutral-200/80 creso-hero-glow bg-grid-pattern">
         <div className="max-w-4xl mx-auto px-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold mb-4 bg-white/90 border border-neutral-200/90 text-neutral-700 shadow-2xs">
-            <Sparkles size={13} className="text-amber-500" />
             <span>Curriculum · 17 Labs · 42+ Reviews</span>
           </div>
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-950 tracking-tight mb-4">
             Academics & Specializations
           </h1>
-          <p className="text-base sm:text-lg text-neutral-600 max-w-2xl mx-auto leading-relaxed">
-            Comprehensive curriculum structure, 7 official graduate disciplines, verified course reviews, and past-year resources for Civil Engineering students at IIT Bombay.
-          </p>
         </div>
       </div>
 
@@ -157,19 +153,7 @@ export default function Academics() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Tab 0: Curriculum */}
-        {activeTab === 0 && (
-          <div>
-            <div className="max-w-3xl mb-8">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Curriculum Map</span>
-              <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight mt-1 mb-2">
-                B.Tech Civil Engineering — 4-Year Structure
-              </h2>
-              <p className="text-neutral-600 text-sm leading-relaxed">
-                The 4-year undergraduate programme comprises Institute Core (Maths, Physics, Chemistry, Biology), Department Core, Department Electives, Open Electives, and the two-stage B.Tech Project (BTP).
-              </p>
-            </div>
-
+      
             {/* Credit Summary Pills */}
             <div className="flex flex-wrap gap-2 mb-8">
               {Object.entries(typeColors).map(([type, colors]) => (
@@ -223,19 +207,7 @@ export default function Academics() {
             </div>
           </div>
         )}
-
-        {/* Tab 1: Specializations & Labs */}
-        {activeTab === 1 && (
-          <div className="space-y-8">
-            <div className="max-w-3xl">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Research & Advanced Studies</span>
-              <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight mt-1 mb-2">
-                7 Graduate Specializations & 17 Laboratories
-              </h2>
-              <p className="text-neutral-600 text-sm leading-relaxed">
-                The Department of Civil Engineering at IIT Bombay is structured into 7 core academic disciplines, offering B.Tech conversion to Dual Degree, M.Tech, and Ph.D. degrees with world-class laboratory facilities.
-              </p>
-            </div>
+   
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {specializations.map(spec => (
