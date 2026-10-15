@@ -784,7 +784,7 @@ export const blogs = [
 // ===================== TEAM =====================
 export const subgroupHeads = [
   { id: 1, name: "Parv Seth", subgroup: "Web", year: "3rd/4th Year", email: "comingsoon@iitb.ac.in", linkedin: "#", description: "Details coming soon...", photo: "" },
-  { id: 2, name: "Nehul Gupta", subgroup: "Blog & Media", year: "3rd/4th Year", email: "comingsoon@iitb.ac.in", linkedin: "#", description: "Details coming soon...", photo: "" },
+  { id: 2, name: "Mrunal Pachpande", subgroup: "Blog & Media", year: "3rd/4th Year", email: "comingsoon@iitb.ac.in", linkedin: "#", description: "Details coming soon...", photo: "/team-photos/mrunal_pachpande.jpg" },
   { id: 3, name: "Aryan Kashyap", subgroup: "Events", year: "3rd/4th Year", email: "comingsoon@iitb.ac.in", linkedin: "#", description: "Details coming soon...", photo: "" },
   { id: 4, name: "Puranjay Bansal", subgroup: "Core & Research", year: "3rd/4th Year", email: "comingsoon@iitb.ac.in", linkedin: "#", description: "Details coming soon...", photo: "" },
   { id: 5, name: "Prateek Jadhao", subgroup: "Resources", year: "3rd/4th Year", email: "comingsoon@iitb.ac.in", linkedin: "#", description: "Details coming soon...", photo: "" },
