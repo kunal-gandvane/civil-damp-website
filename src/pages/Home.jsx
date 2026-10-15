@@ -17,13 +17,6 @@ import { upcomingEvents, departmentInfo, specializations } from '../data/dummy'
 import HeroSlideshow from '../components/HeroSlideshow'
 import { ScrollReveal } from '../components/ScrollAnimations'
 
-const stats = [
-  { icon: Award, value: '#1 in India', label: 'QS World Subject Ranking 2024', link: '/' },
-  { icon: Building2, value: '17', label: 'Advanced Research Labs', link: '/academics?tab=1' },
-  { icon: Users, value: '55+', label: 'World-Class Faculty', link: '/research-booklet' },
-  { icon: GraduationCap, value: '1958', label: 'Founding Dept. of IIT Bombay', link: '/' },
-]
-
 const explore = [
   { icon: GraduationCap, label: 'Academics & Structure', desc: 'Curriculum paths, 7 graduate specializations & 42+ verified course reviews', path: '/academics' },
   { icon: Briefcase, label: 'Core Experiences & Blogs', desc: 'L&T/Arup core internships, student advice blogs & SemEx chronicles', path: '/experience' },
@@ -106,28 +99,6 @@ export default function Home() {
               ))}
             </div>
           </ScrollReveal>
-        </div>
-      </section>
-      
-      {/* ===== STATS STRIP ===== */}
-      <section className="py-12 border-y border-neutral-200/80 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {stats.map(({ icon: Icon, value, label, link }, i) => (
-              <ScrollReveal key={label} animation="scale" delay={i * 80}>
-                <Link
-                  to={link}
-                  className="flex flex-col items-center text-center p-6 rounded-2xl border border-neutral-200/70 hover:border-neutral-300 bg-[#faf9f5]/50 hover:bg-white hover-lift transition-all group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-800 mb-3 group-hover:bg-neutral-900 group-hover:text-white transition-colors">
-                    <Icon size={20} />
-                  </div>
-                  <span className="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">{value}</span>
-                  <span className="text-xs text-neutral-500 font-medium mt-1">{label}</span>
-                </Link>
-              </ScrollReveal>
-            ))}
-          </div>
         </div>
       </section>
 
