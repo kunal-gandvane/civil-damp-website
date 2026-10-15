@@ -108,35 +108,7 @@ export default function Home() {
           </ScrollReveal>
         </div>
       </section>
-
-      {/* ===== HOW DAMP MENTORSHIP WORKS ===== */}
-      <section className="py-16 sm:py-20 bg-[#faf9f5]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <ScrollReveal animation="fade-up">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">The Process</span>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-neutral-950 tracking-tight mt-1 mb-12">
-              How DAMP Mentorship Works
-            </h2>
-          </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {steps.map(({ step, icon: Icon, title, desc }, i) => (
-              <ScrollReveal key={step} animation="fade-up" delay={i * 100}>
-                <div className="p-8 rounded-3xl bg-white border border-neutral-200/80 hover-lift text-center flex flex-col items-center h-full shadow-2xs">
-                  <div className="w-14 h-14 rounded-2xl bg-[#faf9f5] border border-neutral-200/80 flex items-center justify-center text-neutral-900 shadow-2xs mb-5 relative">
-                    <Icon size={24} />
-                    <span className="absolute -top-2 -right-2 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-neutral-900 text-white">
-                      {step}
-                    </span>
-                  </div>
-                  <h3 className="font-bold text-neutral-900 text-base mb-2">{title}</h3>
-                  <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">{desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      
       {/* ===== STATS STRIP ===== */}
       <section className="py-12 border-y border-neutral-200/80 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -155,78 +127,6 @@ export default function Home() {
                 </Link>
               </ScrollReveal>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== DEPARTMENT EXCELLENCE BANNER ===== */}
-      <section className="py-16 sm:py-20 bg-[#faf9f5]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl p-8 sm:p-10 lg:p-12 border border-neutral-200/90 bg-white shadow-card relative overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-7">
-                <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-neutral-100 text-neutral-700 border border-neutral-200 inline-block mb-4">
-                  Legacy of Leadership in Civil Engineering
-                </span>
-                <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-neutral-950 tracking-tight mb-4">
-                  Ranked #1 in India · 51–100 Worldwide
-                </h2>
-                <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-6 max-w-xl">
-                  Established in 1958 as one of IIT Bombay's founding pillars, the Department of Civil Engineering is celebrated globally for groundbreaking research, 17 state-of-the-art laboratories, and 9+ faculty members ranked in the Global Top 2% Scientists by Stanford University.
-                </p>
-                <div className="flex flex-wrap gap-2.5">
-                  <a
-                    href="https://www.civil.iitb.ac.in/Final_brochure_2023.pdf"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="creso-btn-primary !text-xs !py-2 !px-4"
-                  >
-                    <span>Download Department Brochure</span>
-                    <ExternalLink size={13} />
-                  </a>
-                  <a
-                    href="https://www.civil.iitb.ac.in/civilinsights_2025.pdf"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="creso-btn-secondary !text-xs !py-2 !px-4"
-                  >
-                    <span>Civil Insights Magazine</span>
-                    <ExternalLink size={13} />
-                  </a>
-                  <a
-                    href="https://www.youtube.com/watch?v=hVTT5Po8vzA"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="creso-btn-secondary !text-xs !py-2 !px-4"
-                  >
-                    <Video size={13} className="text-red-500" />
-                    <span>Video Tour</span>
-                  </a>
-                </div>
-              </div>
-
-              <div className="lg:col-span-5 bg-neutral-50 rounded-2xl p-6 border border-neutral-200/80">
-                <div className="flex items-center gap-3.5 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-neutral-900 text-white font-bold flex items-center justify-center text-sm shadow-xs shrink-0">
-                    TM
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-neutral-900 text-sm">{departmentInfo.hod.name}</h4>
-                    <p className="text-xs text-neutral-500">{departmentInfo.hod.designation}</p>
-                  </div>
-                </div>
-                <blockquote className="text-xs sm:text-sm text-neutral-700 italic mb-4 border-l-2 border-neutral-900 pl-3 leading-relaxed">
-                  &ldquo;To be the fountain-head of new ideas and innovations in Civil Engineering, delivering world-class education and impactful research to society.&rdquo;
-                </blockquote>
-                <a
-                  href={`mailto:${departmentInfo.hod.email}`}
-                  className="text-xs font-semibold text-neutral-900 hover:underline flex items-center gap-1.5"
-                >
-                  <Mail size={13} />
-                  <span>{departmentInfo.hod.email}</span>
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </section>
